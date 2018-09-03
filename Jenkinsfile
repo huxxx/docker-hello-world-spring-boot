@@ -17,7 +17,7 @@ node {
   
     stage('Build Project') {
       // build project via maven
-      sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+      sh "'${mvnHome}/bin/mvn' -Dmaven.test.skip=true -Pdocker clean package deploy"
     }
 	
 	stage('Publish Tests Results'){
@@ -32,21 +32,21 @@ node {
       })
     }
 		
-    stage('Build Docker Image') {
+    //stage('Build Docker Image') {
       // build docker image
-      sh "mv ./target/hello*.jar ./data" 
+      //sh "mv ./target/hello*.jar ./data" 
       
-      dockerImage = docker.build("hello-world-java")
-    }
+      //dockerImage = docker.build("hello-world-java")
+    //}
    
-    stage('Deploy Docker Image'){
+    //stage('Deploy Docker Image'){
       
       // deploy docker image to nexus
 
-      echo "Docker Image Tag Name: ${dockerImageTag}"
+      //echo "Docker Image Tag Name: ${dockerImageTag}"
 
-      sh "docker login -u admin -p admin123 ${dockerRepoUrl}"
-      sh "docker tag ${dockerImageName} ${dockerImageTag}"
-      sh "docker push ${dockerImageTag}"
-    }
+      //sh "docker login -u admin -p admin123 ${dockerRepoUrl}"
+      //sh "docker tag ${dockerImageName} ${dockerImageTag}"
+      //sh "docker push ${dockerImageTag}"
+    //}
 }
