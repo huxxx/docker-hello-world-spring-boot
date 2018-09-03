@@ -11,14 +11,10 @@ node {
     def dockerImageName = "hello-world-java"
     def dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:${env.BUILD_NUMBER}"
     
-    stage('Clone Repo') { // for display purposes
-      // Get some code from a GitHub repository
+    stage('Clone Repo') {
       git 'https://github.com/huxxx/docker-hello-world-spring-boot.git'
-      // Get the Maven tool.
-      // ** NOTE: This 'maven-3.5.2' Maven tool must be configured
-      // **       in the global configuration.           
-      mvnHome = tool 'maven-3.5.2'
-    }    
+      mvnHome = tool 'apache-maven-3.5.4'
+    }
   
     stage('Build Project') {
       // build project via maven
