@@ -9,11 +9,10 @@ node {
     
     def dockerRepoUrl = "47.100.49.91:5000"
     def dockerImageName = "hello-world-java"
-    def dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:${env.BUILD_NUMBER}"
+    def dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:0.0.1"
     
-    stage('Clone Repo') {
-      git 'https://github.com/huxxx/docker-hello-world-spring-boot.git'
-      mvnHome = tool 'apache-maven-3.5.4'
+    stage('checkout') {
+      git branch: '${BRANCH_NAME}', credentialsId: 'ce4f3e25-557e-44ac-80bb-abc50c20960b', url: 'https://github.com/huxxx/docker-hello-world-spring-boot.git'
     }
   
     stage('Build Project') {
