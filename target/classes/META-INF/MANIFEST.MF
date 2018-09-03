@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: hello-world
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: 49103
+Implementation-Vendor-Id: com.dockerforjavadevelopers
+Build-Jdk: 1.8.0_65
+Implementation-URL: http://projects.spring.io/spring-boot/hello-world/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+Main-Class: com.dockerforjavadevelopers.hello.Application
+
